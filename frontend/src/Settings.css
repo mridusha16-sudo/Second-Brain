@@ -1,0 +1,316 @@
+/* ==========================================
+   SECOND BRAIN - SETTINGS
+========================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+
+/* ==========================================
+   SETTINGS PAGE
+========================================== */
+
+.settings-page {
+  min-height: 100vh;
+
+  width: 100%;
+
+  padding: 45px 20px 70px;
+
+  background:
+    radial-gradient(
+      circle at 10% 15%,
+      rgba(118, 75, 162, 0.16),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 90% 10%,
+      rgba(102, 126, 234, 0.18),
+      transparent 30%
+    ),
+    linear-gradient(
+      135deg,
+      #eef0ff 0%,
+      #f4f1fb 45%,
+      #edf4fb 100%
+    );
+
+  color: #1e2433;
+}
+
+
+/* ==========================================
+   PAGE TITLE
+========================================== */
+
+.settings-page h1 {
+  width: min(700px, 90%);
+
+  margin: 0 auto 30px;
+
+  text-align: left;
+
+  color: #202535;
+
+  font-size: 30px;
+
+  font-weight: 800;
+
+  letter-spacing: -0.7px;
+}
+
+
+/* ==========================================
+   SETTINGS CARD
+========================================== */
+
+.settings-card {
+  width: min(700px, 90%);
+
+  margin: 0 auto 24px;
+
+  padding: 28px;
+
+  background:
+    rgba(255, 255, 255, 0.94);
+
+  border:
+    1px solid
+    rgba(30, 36, 51, 0.07);
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 10px 30px
+    rgba(30, 36, 51, 0.07);
+
+  transition:
+    transform 0.28s ease,
+    box-shadow 0.28s ease,
+    border-color 0.28s ease;
+}
+
+.settings-card:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 16px 35px
+    rgba(30, 36, 51, 0.10);
+
+  border-color:
+    rgba(102, 126, 234, 0.22);
+}
+
+
+/* ==========================================
+   CARD HEADINGS
+========================================== */
+
+.settings-card h2 {
+  margin: 0 0 22px;
+
+  color: #202535;
+
+  font-size: 19px;
+
+  font-weight: 750;
+
+  letter-spacing: -0.3px;
+}
+
+
+/* ==========================================
+   INPUTS
+========================================== */
+
+.settings-card input {
+  width: 100%;
+
+  padding: 13px 14px;
+
+  margin-bottom: 15px;
+
+  background: #f7f8fb;
+
+  border:
+    1px solid
+    #dfe2ea;
+
+  border-radius: 10px;
+
+  color: #252a39;
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.settings-card input::placeholder {
+  color: #999fad;
+}
+
+.settings-card input:hover {
+  border-color: #c4c9d5;
+}
+
+.settings-card input:focus {
+  background: #ffffff;
+
+  border-color: #667eea;
+
+  box-shadow:
+    0 0 0 3px
+    rgba(102, 126, 234, 0.12);
+}
+
+
+/* ==========================================
+   BUTTONS
+========================================== */
+
+.settings-card button {
+  width: 100%;
+
+  padding: 13px 16px;
+
+  margin-top: 4px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #667eea,
+      #764ba2
+    );
+
+  color: white;
+
+  border: none;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  font-weight: 700;
+
+  box-shadow:
+    0 7px 16px
+    rgba(102, 126, 234, 0.20);
+
+  transition:
+    transform 0.22s ease,
+    box-shadow 0.22s ease,
+    filter 0.22s ease;
+}
+
+.settings-card button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 11px 23px
+    rgba(102, 126, 234, 0.28);
+
+  filter: brightness(1.04);
+}
+
+.settings-card button:active {
+  transform: translateY(0) scale(0.99);
+}
+
+
+/* ==========================================
+   SUCCESS / ERROR MESSAGE
+========================================== */
+
+.settings-card p {
+  margin: 15px 0 0;
+
+  padding: 11px 13px;
+
+  border-radius: 9px;
+
+  background: #f5f6fa;
+
+  color: #596071;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  line-height: 1.5;
+}
+
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width: 600px) {
+
+  .settings-page {
+    padding: 30px 0 50px;
+  }
+
+  .settings-page h1 {
+    width: 92%;
+
+    font-size: 27px;
+
+    margin-bottom: 22px;
+  }
+
+  .settings-card {
+    width: 92%;
+
+    padding: 22px;
+
+    border-radius: 17px;
+  }
+
+  .settings-card h2 {
+    font-size: 18px;
+  }
+
+  .settings-card input {
+    font-size: 13px;
+
+    padding: 12px;
+  }
+
+  .settings-card button {
+    font-size: 13px;
+  }
+}
+
+
+/* ==========================================
+   ACCESSIBILITY
+========================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .settings-card,
+  .settings-card input,
+  .settings-card button {
+    transition: none;
+  }
+
+  .settings-card:hover {
+    transform: none;
+  }
+
+  .settings-card button:hover {
+    transform: none;
+  }
+}
