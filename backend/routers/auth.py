@@ -331,10 +331,9 @@ def forgot_password(
     db.add(reset_record)
     db.commit()
 
-    # DEVELOPMENT ONLY
-    # Later this link will be sent through email.
+    # Reset link for deployed frontend
     reset_link = (
-        f"http://localhost:5173/reset-password?token={token}"
+        f"https://second-brain-frontend-t3xg.onrender.com/reset-password?token={token}"
     )
 
     return {
