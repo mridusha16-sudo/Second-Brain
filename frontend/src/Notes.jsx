@@ -18,7 +18,7 @@ function Notes() {
   const [expandedNoteId, setExpandedNoteId] =
     useState(null);
 
-  const API_URL = "http://10.120.56.140:8000";
+  const API_URL = "https://second-brain-backend-bvxz.onrender.com";
 
   // ==========================================
   // GET SUBJECTS

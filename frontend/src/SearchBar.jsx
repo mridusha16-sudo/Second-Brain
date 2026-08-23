@@ -37,7 +37,7 @@ function SearchBar() {
 
       try {
         const response = await fetch(
-          `http://10.120.56.140:8000/search/?q=${encodeURIComponent(
+          `https://second-brain-backend-bvxz.onrender.com/search/?q=${encodeURIComponent(
             search
           )}`
         );

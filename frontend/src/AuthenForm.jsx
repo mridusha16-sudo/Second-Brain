@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const API_URL = "http://10.120.56.140:8000";
+const API_URL = "https://second-brain-backend-bvxz.onrender.com";
 
 const AuthenForm = () => {
   const [isLogin, setIsLogin] = useState(true);

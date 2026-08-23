@@ -43,7 +43,7 @@ function PDFViewer() {
   // ==========================================
 
   const pdfURL =
-    `http://10.120.56.140:8000/upload/view/${encodeURIComponent(
+    `https://second-brain-backend-bvxz.onrender.com/upload/view/${encodeURIComponent(
       fileName
     )}`;
 
