@@ -16,6 +16,10 @@ const AuthenForm = () => {
 
   const navigate = useNavigate();
 
+  // ==========================================
+  // LOGIN
+  // ==========================================
+
   const handleLogin = async () => {
     setError("");
     setMessage("");
@@ -64,6 +68,10 @@ const AuthenForm = () => {
       setError("Could not connect to the server.");
     }
   };
+
+  // ==========================================
+  // SIGN UP
+  // ==========================================
 
   const handleSignup = async () => {
     setError("");
@@ -114,6 +122,10 @@ const AuthenForm = () => {
     }
   };
 
+  // ==========================================
+  // FORGOT PASSWORD
+  // ==========================================
+
   const handleForgotPassword = async () => {
     setError("");
     setMessage("");
@@ -142,9 +154,10 @@ const AuthenForm = () => {
       }
 
       if (data.reset_link) {
-        navigate(
-          data.reset_link.replace("http://localhost:5173", "")
-        );
+        // FIX:
+        // Open the complete reset URL directly.
+        // This works with the deployed Render URL.
+        window.location.href = data.reset_link;
       } else {
         setMessage(
           "If this email is registered, a reset link has been generated."
@@ -155,6 +168,10 @@ const AuthenForm = () => {
       setError("Could not connect to the server.");
     }
   };
+
+  // ==========================================
+  // UI
+  // ==========================================
 
   return (
     <div className="auth-page">
