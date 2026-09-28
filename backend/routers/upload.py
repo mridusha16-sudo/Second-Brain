@@ -8,6 +8,7 @@ from io import BytesIO
 import pymupdf
 import pytesseract
 import uuid
+import os
 
 from database import SessionLocal
 from models import UploadedFile, Activity
@@ -23,10 +24,19 @@ UPLOAD_DIR = Path("uploads")
 UPLOAD_DIR.mkdir(exist_ok=True)
 
 
+# ==========================================
 # Tesseract installation path
-pytesseract.pytesseract.tesseract_cmd = (
-    r"C:\Program Files\Tesseract-OCR\tesseract.exe"
-)
+# ==========================================
+# On Windows, use the local Tesseract installation.
+# On Render/Linux, Tesseract will be searched
+# from the system PATH.
+
+if os.name == "nt":
+
+    tesseract_path = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+
+    if os.path.exists(tesseract_path):
+        pytesseract.pytesseract.tesseract_cmd = tesseract_path
 
 
 # ==========================================
@@ -34,10 +44,12 @@ pytesseract.pytesseract.tesseract_cmd = (
 # ==========================================
 
 def get_db():
+
     db = SessionLocal()
 
     try:
         yield db
+
     finally:
         db.close()
 
@@ -54,6 +66,7 @@ async def upload_file(
 
     # Check if file is PDF
     if file.content_type != "application/pdf":
+
         raise HTTPException(
             status_code=400,
             detail="Only PDF files are allowed"
@@ -61,6 +74,7 @@ async def upload_file(
 
     # Create unique filename
     file_id = str(uuid.uuid4())
+
     file_name = f"{file_id}_{file.filename}"
 
     file_path = UPLOAD_DIR / file_name
@@ -70,6 +84,7 @@ async def upload_file(
 
     # Save PDF physically
     with open(file_path, "wb") as buffer:
+
         buffer.write(contents)
 
     # ==========================================
@@ -85,6 +100,7 @@ async def upload_file(
         text = page.extract_text()
 
         if text:
+
             extracted_text += text + "\n"
 
     # ==========================================
@@ -143,7 +159,9 @@ async def upload_file(
     )
 
     db.add(new_file)
+
     db.commit()
+
     db.refresh(new_file)
 
     # ==========================================
@@ -156,6 +174,7 @@ async def upload_file(
     )
 
     db.add(activity)
+
     db.commit()
 
     # ==========================================
@@ -194,6 +213,7 @@ def view_file(file_name: str):
     file_path = UPLOAD_DIR / file_name
 
     if not file_path.exists():
+
         raise HTTPException(
             status_code=404,
             detail="File not found"
@@ -218,6 +238,7 @@ def delete_file(
     file_path = UPLOAD_DIR / file_name
 
     if not file_path.exists():
+
         raise HTTPException(
             status_code=404,
             detail="File not found"
@@ -232,7 +253,9 @@ def delete_file(
     ).first()
 
     if saved_file:
+
         db.delete(saved_file)
+
         db.commit()
 
     return {
